@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import com.neppplus.daily10minutesapplication_20210411.utils.ContextUtil
 import com.neppplus.daily10minutesapplication_20210411.utils.ServerUtil
 import kotlinx.android.synthetic.main.activity_login.*
 import org.json.JSONObject
@@ -22,7 +23,7 @@ class LoginActivity : BaseActivity() {
 
         autoLoginCheckBox.setOnCheckedChangeListener { compoundButton, isChecked ->
 
-            Log.d("자동로그인체크여부", isChecked.toString())
+            ContextUtil.setAutoLogin(mContext, isChecked)
         }
 
 
@@ -87,6 +88,8 @@ class LoginActivity : BaseActivity() {
     }
 
     override fun setValues() {
+
+        autoLoginCheckBox.isChecked = ContextUtil.getAutoLogin(mContext)
 
     }
 
