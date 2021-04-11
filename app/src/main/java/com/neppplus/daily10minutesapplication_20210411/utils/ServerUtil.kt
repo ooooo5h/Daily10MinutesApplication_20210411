@@ -1,8 +1,9 @@
 package com.neppplus.daily10minutesapplication_20210411.utils
 
-import okhttp3.FormBody
-import okhttp3.OkHttpClient
-import okhttp3.Request
+import android.util.Log
+import okhttp3.*
+import org.json.JSONObject
+import java.io.IOException
 
 class ServerUtil {
 
@@ -27,7 +28,25 @@ class ServerUtil {
 
             val client = OkHttpClient()
 
-            client.newCall(request)
+            client.newCall(request).enqueue(object : Callback {
+                override fun onFailure(call: Call, e: IOException) {
+
+                }
+
+                override fun onResponse(call: Call, response: Response) {
+
+                    val bodyString = response.body!!.string()
+
+                    val jsonObj = JSONObject(bodyString)
+
+                    Log.d("서버응답", jsonObj.toString())
+
+
+                }
+
+
+            })
+
 
 
         }
