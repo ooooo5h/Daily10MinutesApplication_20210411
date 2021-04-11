@@ -2,8 +2,11 @@ package com.neppplus.daily10minutesapplication_20210411
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import com.neppplus.daily10minutesapplication_20210411.utils.ServerUtil
 import kotlinx.android.synthetic.main.activity_main.*
+import org.json.JSONObject
 
 class MainActivity : BaseActivity() {
 
@@ -21,7 +24,28 @@ class MainActivity : BaseActivity() {
             val inputEmail = emailEdt.text.toString()
             val inputPassword = passwordEdt.text.toString()
 
-            ServerUtil.postRequestLogin(inputEmail, inputPassword)
+            ServerUtil.postRequestLogin(inputEmail, inputPassword, object : ServerUtil.JsonResponseHandler{
+                override fun onResponse(jsonObj: JSONObject) {
+
+                    val codeNum = jsonObj.getInt("code")
+
+                    if (codeNum == 200) {
+
+                    }
+                    else {
+
+                        runOnUiThread {
+                            Toast.makeText(mContext, "로그인 실패", Toast.LENGTH_SHORT).show()
+                        }
+
+
+                    }
+
+
+                }
+
+
+            })
         }
 
     }
