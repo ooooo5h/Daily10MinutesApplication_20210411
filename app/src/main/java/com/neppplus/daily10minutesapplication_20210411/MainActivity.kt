@@ -21,7 +21,7 @@ class MainActivity : BaseActivity() {
             val inputEmail = emailEdt.text.toString()
             val inputPassword = passwordEdt.text.toString()
 
-
+            ServerUtil.postRequestLogin(inputEmail, inputPassword)
         }
 
     }
