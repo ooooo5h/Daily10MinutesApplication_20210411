@@ -2,6 +2,7 @@ package com.neppplus.daily10minutesapplication_20210411
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.neppplus.daily10minutesapplication_20210411.utils.ServerUtil
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
@@ -19,6 +20,7 @@ class MainActivity : BaseActivity() {
 
             val inputEmail = emailEdt.text.toString()
             val inputPassword = passwordEdt.text.toString()
+
 
         }
 
