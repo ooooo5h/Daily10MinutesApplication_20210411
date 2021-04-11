@@ -39,6 +39,24 @@ class LoginActivity : BaseActivity() {
 
                     if (codeNum == 200) {
 
+                        val dataObj = jsonObj.getJSONObject("data")
+                        val userObj = dataObj.getJSONObject("user")
+
+                        val nickname = userObj.getString("nick_name")
+
+                        runOnUiThread {
+                            Toast.makeText(mContext, "${nickname}님 환영합니다", Toast.LENGTH_SHORT).show()
+
+                            val myIntent = Intent(mContext, MainActivity::class.java)
+                            startActivity(myIntent)
+
+                            finish()
+
+                        }
+
+
+
+
                     }
                     else {
 
