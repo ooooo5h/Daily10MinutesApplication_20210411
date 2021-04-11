@@ -17,6 +17,14 @@ class SignUpActivity : BaseActivity() {
     }
     override fun setupEvents() {
 
+        emailCheckBtn.setOnClickListener {
+
+            val inputEmail = emailEdt.text.toString()
+
+            ServerUtil.getRequestEmailCheck(inputEmail, null)
+
+        }
+
         signUpBtn.setOnClickListener {
 
             val inputEmail = emailEdt.text.toString()
@@ -35,7 +43,6 @@ class SignUpActivity : BaseActivity() {
                             finish()
                         }
 
-
                     }
                     else {
                         val message = jsonObj.getString("message")
@@ -46,7 +53,6 @@ class SignUpActivity : BaseActivity() {
                     }
 
                 }
-
 
             })
 

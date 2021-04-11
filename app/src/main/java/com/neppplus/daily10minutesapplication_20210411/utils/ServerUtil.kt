@@ -2,6 +2,7 @@ package com.neppplus.daily10minutesapplication_20210411.utils
 
 import android.util.Log
 import okhttp3.*
+import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
 import org.json.JSONObject
 import java.io.IOException
 
@@ -9,9 +10,7 @@ class ServerUtil {
 
     interface JsonResponseHandler {
         fun onResponse(jsonObj : JSONObject)
-
     }
-
 
     companion object {
 
@@ -90,6 +89,17 @@ class ServerUtil {
 
         }
 
+        fun getRequestEmailCheck(email : String, handler: JsonResponseHandler?) {
+
+            val urlBuilder = "${HOST_URL}/email_check".toHttpUrlOrNull()!!.newBuilder()
+
+            urlBuilder.addEncodedQueryParameter("email", email)
+
+            val urlString = urlBuilder.build().toString()
+
+            Log.d("가공된url", urlString )
+
+        }
 
     }
 
