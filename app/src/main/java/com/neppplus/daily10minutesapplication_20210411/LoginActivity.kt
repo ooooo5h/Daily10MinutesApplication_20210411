@@ -20,6 +20,12 @@ class LoginActivity : BaseActivity() {
 
     override fun setupEvents() {
 
+        autoLoginCheckBox.setOnCheckedChangeListener { compoundButton, isChecked ->
+
+            Log.d("자동로그인체크여부", isChecked.toString())
+        }
+
+
         signUpBtn.setOnClickListener {
 
             val myIntent = Intent(mContext, SignUpActivity::class.java)
